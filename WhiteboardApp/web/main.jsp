@@ -15,6 +15,7 @@
     <body>
         
         <h5 style="position:absolute; right: 20px; top:20px" id="userNameHeader"></h5>
+        <h4 style="position:absolute; right: 20px; top:20px" id="userNameHeader">${user.username}</h4>
         <button onclick="logout();" style="position: absolute; right:20px; top: 60px;">Logout!</button>
         
         <h1>Collaborative Whiteboard App</h1>
@@ -59,6 +60,9 @@
             </td>
         </tr>
     </table>
+ <c:forEach var="actual" items="${onlineusers}">
+            ${actual.username}<br>
+        </c:forEach>
     <script type="text/javascript" src="users.js"></script>
     <script type="text/javascript" src="websocket.js"></script>
     <script type="text/javascript" src="whiteboard.js"></script>
