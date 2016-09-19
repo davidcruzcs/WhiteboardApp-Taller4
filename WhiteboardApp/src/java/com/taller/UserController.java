@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Sergio
  */
-public class UserManager {
+public class UserController {
       
         //All registered users
         private static ArrayList<User> users = new ArrayList<User>();

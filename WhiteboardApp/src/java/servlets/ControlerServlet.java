@@ -6,7 +6,7 @@
 package servlets;
 
 import com.taller.User;
-import com.taller.UserManager;
+import com.taller.UserController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class ControlerServlet extends HttpServlet {
     
     public ControlerServlet() {
         super();
-        UserManager.initializeTestUsers();
+        UserController.initializeTestUsers();
     }
     
     protected void doGet(HttpServletRequest request,
@@ -61,7 +61,7 @@ public class ControlerServlet extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             
-            loggedUser = UserManager.authenticateUser(username);
+            loggedUser = UserController.authenticateUser(username);
             
             if (loggedUser != null) {
                 rd = request.getRequestDispatcher("/main.jsp");
@@ -73,7 +73,7 @@ public class ControlerServlet extends HttpServlet {
         } else if (request.getParameter("logout") != null) {
             //loggedIn = (User) request.getAttribute("user");
             
-            if (UserManager.logout(loggedUser)) {
+            if (UserController.logout(loggedUser)) {
                 loggedUser = null;
                 request.setAttribute("user", null);
             }
@@ -85,7 +85,7 @@ public class ControlerServlet extends HttpServlet {
         else if ( request.getParameter("onlinelist") != null)
         {
             rd = request.getRequestDispatcher("/main.jsp");
-            ArrayList<User> arr = UserManager.getConnectedUsers();
+            ArrayList<User> arr = UserController.getConnectedUsers();
             
             request.setAttribute("onlineusers", arr);
 
